@@ -1,6 +1,9 @@
 #ifndef PATH_HPP
 #define PATH_HPP
 
+#include <string>
+#include <functional>
+
 #include "shake/core/data_structures/string.hpp"
 
 namespace shake {
@@ -37,7 +40,9 @@ private:
     std::string m_string;
 };
 
+
 } // namespace io
 } // namespace shake
+
 
 #endif // PATH_HPP
