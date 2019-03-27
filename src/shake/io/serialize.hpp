@@ -1,11 +1,12 @@
-#ifndef CAST_HPP
-#define CAST_HPP
+#ifndef SERIALIZE_HPP
+#define SERIALIZE_HPP
 
 #include "shake/core/data_structures/string.hpp"
 
 #include <vector>
 
 namespace shake {
+namespace io {
 
 //----------------------------------------------------------------
 using ByteBuffer = std::vector<uint8_t>;
@@ -41,6 +42,7 @@ inline std::string deserialize<std::string>( const ByteBuffer& bytes )
     return std::string( std::begin( bytes ), std::end( bytes ) );
 }
 
+} // namespace io
 } // namespace shake
 
-#endif // CAST_HPP
+#endif // SERIALIZE_HPP

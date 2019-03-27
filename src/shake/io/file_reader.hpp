@@ -14,7 +14,14 @@ class FileReader
 public:
     FileReader(const Path& path);
 
-    ByteBuffer  read_bytes( const size_t count );
+    ByteBuffer read_bytes( const size_t count );
+
+    //----------------------------------------------------------------
+    template< typename T >
+    T read( const size_t size = sizeof( T ) )
+    {
+        return deserialize<T>( read_bytes( size ) );
+    }
 
     std::string read_as_string();
     ByteBuffer  read_as_bytes();
