@@ -45,6 +45,13 @@ std::string FileReader::read_as_string()
 {
     return deserialize<std::string>( read_as_bytes() );
 }
+//----------------------------------------------------------------
+void FileReader::advance( const size_t size )
+{
+    EXPECT_LE( m_position + size, m_size, "Could not advance the requested number of bytes." );
+    m_file_stream.ignore( size );
+    m_position += size;
+}
 
 } // namespace io
 } // namespace shake

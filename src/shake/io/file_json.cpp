@@ -13,7 +13,7 @@ namespace json  {
 Json read(const Path& path)
 {
     CHECK( file::exists(path), "json file does not exist. " + path.get_string() );
-    CHECK(path.has_file_extension("json"), "Provided path does not specify a .json file.");
+    CHECK(path.has_file_extension(".json"), "Provided path does not specify a .json file.");
     std::string json_string { file::read_as_string( path ) };
     std::string parse_error { };
     Json json { Json::parse(json_string.c_str(), parse_error, JsonParse::COMMENTS) };

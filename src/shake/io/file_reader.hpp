@@ -26,6 +26,8 @@ public:
     std::string read_as_string();
     ByteBuffer  read_as_bytes();
 
+    void advance( const size_t size );
+
     Path        get_path()      const;
     size_t      get_size()      const;
     size_t      get_position()  const;

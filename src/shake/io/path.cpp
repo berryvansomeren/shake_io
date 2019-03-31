@@ -22,7 +22,7 @@ std::string Path::get_string() const
 std::string Path::get_file_extension() const
 {
     size_t dot_index { m_string.rfind(".") };
-    std::string file_extension { m_string.substr(dot_index + 1) };
+    std::string file_extension { m_string.substr( dot_index ) };
     return file_extension;
 }
 
