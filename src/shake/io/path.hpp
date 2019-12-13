@@ -4,7 +4,7 @@
 #include <string>
 #include <functional>
 
-#include "shake/core/data_structures/string.hpp"
+#include "shake/core/std/string.hpp"
 
 namespace shake {
 namespace io {

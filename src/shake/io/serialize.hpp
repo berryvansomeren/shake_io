@@ -1,7 +1,7 @@
 #ifndef SERIALIZE_HPP
 #define SERIALIZE_HPP
 
-#include "shake/core/data_structures/string.hpp"
+#include "shake/core/std/string.hpp"
 
 #include <vector>
 
