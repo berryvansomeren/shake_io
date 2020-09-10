@@ -115,8 +115,11 @@ struct as_type_getter<std::vector<E>>
     static inline std::vector<E> get(const Json& json)
     {
         std::vector<E> result { };
+        CHECK( json.is_array(), "Json object is not an array.")
         for (const auto& element : json.array_items())
-            { result.emplace_back(as_type_getter<E>::get(element)); }
+        { 
+            result.emplace_back(as_type_getter<E>::get(element)); 
+        }
         return result;
     }
 };
@@ -143,6 +146,31 @@ T read_as( const Json& json, const std::initializer_list<std::string>& attribute
     {
         attribute = attribute[ attribute_key ];
         CHECK( attribute != Json(), "Atribute does not exist in json file." );
+    }
+    T result { as_type_getter<T>::get(attribute) };
+    return result;
+}
+
+//----------------------------------------------------------------
+template<typename T> inline
+T read_as_or( const Json& json, const std::string& attribute_key, const T& default_value )
+{
+    Json attribute { json };
+    attribute = attribute[ attribute_key ];
+    if ( attribute != Json() ) { return default_value; }
+    T result { as_type_getter<T>::get(attribute) };
+    return result;
+}
+
+//----------------------------------------------------------------
+template<typename T> inline
+T read_as_or( const Json& json, const std::initializer_list<std::string>& attribute_path, const T& default_value )
+{
+    Json attribute { json };
+    for (const auto& attribute_key : attribute_path)
+    {
+        attribute = attribute[ attribute_key ];
+        if ( attribute != Json() ) { return default_value; }
     }
     T result { as_type_getter<T>::get(attribute) };
     return result;
